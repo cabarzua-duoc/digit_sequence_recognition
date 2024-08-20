@@ -6,7 +6,7 @@ Saving data as tfrecords is an efficient manner to store the data, which allows 
 """
 import pathlib
 import sys
-sys.path.append(str(pathlib.Path().absolute()))
+sys.path.append(str(pathlib.Path().absolute())+'/digit_sequence_recognition')
 import argparse
 import utils.configuration as conf
 import utils.imgproc as imgproc
