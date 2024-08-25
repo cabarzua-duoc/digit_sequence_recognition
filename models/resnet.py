@@ -170,7 +170,7 @@ class ResNetBlock(tf.keras.layers.Layer):
     def call(self, inputs, training):
         x = inputs;
         for block in self.block_collector :
-            x = block(x, training)
+            x = block(x, training=True)
         return x;
 
 
@@ -204,7 +204,7 @@ class ResNetBackbone(tf.keras.Model):
         x = self.conv_0(x)
         x = self.max_pool(x)                 
         for block in self.resnet_blocks :
-            x = block(x, training)      
+            x = block(x, training=True)      
         x = self.bn_last(x)                
         x = tf.keras.activations.relu(x)  
         return x
@@ -228,7 +228,7 @@ class ResNet(tf.keras.Model):
         
     def call(self, inputs, training):
         x = inputs
-        x = self.backbone(x, training)    
+        x = self.backbone(x, training=True)    
         x = self.avg_pool(x)                
         x = tf.keras.layers.Flatten()(x)                        
         x = self.classifier(x)
@@ -248,7 +248,7 @@ class RecogNet(tf.keras.Model):
         
     def call(self, inputs, training):
         x = inputs  #32x32
-        x = self.backbone(x, training) #1x6x256                                
+        x = self.backbone(x, training=True) #1x6x256                                
         x = self.classifier(x) #1x6x10
         return x    
 
