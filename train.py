@@ -79,7 +79,7 @@ if __name__ == '__main__' :
     #build the model indicating the input shape
     #define the model input
     input_image = tf.keras.Input((input_shape[0], input_shape[1], input_shape[2]), name = 'input_image')     
-    model(input_image)    
+    model(input_image,training=True)    
     model.summary()
     #use_checkpoints to load weights
     if configuration.use_checkpoint() :                
