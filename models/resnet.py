@@ -83,7 +83,7 @@ class ResidualBlock(tf.keras.layers.Layer):
         else :
             shortcut = inputs
         y = self.conv_1(y)
-        y = self.bn_1(y, training)
+        y = self.bn_1(y, training=True)
         y = tf.keras.activations.relu(y)
         y = self.conv_2(y)        
         if self.use_se_block :
